@@ -27,8 +27,6 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-            <!-- Add to local repo -->
-
         </plugins>
         <resources>
             <resource>
