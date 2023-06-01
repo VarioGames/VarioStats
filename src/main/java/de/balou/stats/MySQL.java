@@ -1,16 +1,9 @@
 package de.balou.stats;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 
-import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
-
-import net.md_5.bungee.api.ChatColor;
+import java.sql.*;
 
 public class MySQL
 {
@@ -18,15 +11,15 @@ public class MySQL
   public static String DATABASE = "";
   public static String USER = "";
   public static String PASSWORD = "";
+  public static int PORT = 3306;
   private Connection con;
-  
-  public MySQL(String host, String database, String user, String password)
-  {
+
+  public MySQL(String host, String database, String user, String password, int port) {
     HOST = host;
     DATABASE = database;
     USER = user;
     PASSWORD = password;
-    
+    PORT = port;
     connect();
   }
   
@@ -34,7 +27,7 @@ public class MySQL
   {
     try
     {
-      this.con = DriverManager.getConnection("jdbc:mysql://" + HOST + ":3306/" + DATABASE + "?autoReconnect=true", USER, PASSWORD);
+      this.con = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?autoReconnect=true", USER, PASSWORD);
       Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "[StatsAPI] Die Verbindung mit der MySQL Datenbank wurde hergestellt");
     }
     catch (SQLException e)
