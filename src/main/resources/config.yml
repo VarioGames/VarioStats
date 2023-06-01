@@ -1,0 +1,6 @@
+MySQL:
+  Username: 'your_username'
+  Password: 'your_password'
+  Host: 'your_host'
+  Port: 'your_port'
+  Database: 'your_database'
